@@ -117,11 +117,18 @@
     
     document.control_panel.debug_enable.checked = debug_enable;
 
+    function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+
     if (geolocationSupport) {
       posMarker = new google.maps.Marker(
         {position: myLatlng, 
         map: map});
-      navigator.geolocation.watchPosition(showPosition);
+      var opts = {enableHighAccuracy: true,
+          timeout: 600000,
+          maximumAge: 1000000};
+      navigator.geolocation.watchPosition(showPosition, error, opts);
     }
 
     // read from bearings.txt database text file on server and init map
