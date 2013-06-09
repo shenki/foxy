@@ -226,8 +226,8 @@
       if (currentHeading < 0) {
         currentHeading = currentHeading + 360;
       }
-      document.control_panel.alpha.value = event.alpha;
-      document.control_panel.bearingsource.value = "alpha";
+      //document.control_panel.alpha.value = event.alpha;
+      //document.control_panel.bearingsource.value = "alpha";
     }
     document.control_panel.bearing.value = Math.round(currentHeading);
   } 
@@ -590,8 +590,6 @@
 	<tr>
           <td><input type="button" value="Add Bearing" onclick="addBearing2()"></td>
           <td><input type="text" name="bearing" value="0" size="10" ></td>
-          <td><input type="text" name="alpha" value="0" size="10" ></td>
-          <td><input type="text" name="bearingsource" value="" size="10" ></td>
           <td><input type="button" value="Where Am I" onclick="whereAmI()"></td>
         </tr>
         <tr>
