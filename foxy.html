@@ -222,9 +222,11 @@
       document.control_panel.bearingsource.value = "webkit";
     }
     else if (event.alpha != null) {
-      //currentHeading = (270 - event.alpha) * -1;
-      currentHeading = -event.alpha + 90 + 360;
-      currentHeading = currentHeading - 360*Math.floor(currentHeading/360);
+      currentHeading = 270 - event.alpha;
+      if (currentHeading < 0) {
+        currentHeading = currentHeading + 360;
+      }
+      document.control_panel.alpha.value = event.alpha;
       document.control_panel.bearingsource.value = "alpha";
     }
     document.control_panel.bearing.value = Math.round(currentHeading);
@@ -588,6 +590,7 @@
 	<tr>
           <td><input type="button" value="Add Bearing" onclick="addBearing2()"></td>
           <td><input type="text" name="bearing" value="0" size="10" ></td>
+          <td><input type="text" name="alpha" value="0" size="10" ></td>
           <td><input type="text" name="bearingsource" value="" size="10" ></td>
           <td><input type="button" value="Where Am I" onclick="whereAmI()"></td>
         </tr>
